@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">ESSVMS</string>
+    <string name="header_text">ESS VMS</string>
+    <string name="enc_key">"NAAZ_SOFT_ENCRYT"</string>
+    <string name="blank_password_error_msg">Password can not be blank</string>
+    <string name="invalid_password_error_msg">Wrong admin password</string>
+    <string name="generate_qr_code_button_text">Generate QR Code</string>
+    <string name="generate_bar_code_button_text">Generate Bar Code</string>
+    <string name="admin_pass_input_text">Enter admin password</string>
+    <string name="login_button_text">Login</string>
+    <string name="mobile_number_text">Mobile No</string>
+    <string name="full_name_text">Name</string>
+    <string name="user_id_text">Force No / Aadhar No</string>
+    <string name="bar_code_text">Bar Code</string>
+    <string name="qr_code_text">QR Code</string>
+    <string-array name="admin_passes">
+        <item>4G6+gqdNoWHxVtISyyJpTQ==</item>
+        <item>HlkJXeZV76y/IRJ9XEn5BQ==</item>
+        <item>fb846vfASGgsPLI1WuZbhw==</item>
+        <item>i+iClS1Qh1EipUaF6mBgIw==</item>
+        <item>Yzrr/M01B3755IkPrwgp4A==</item>
+    </string-array>
+
+    <string name="key_app_run">ARK</string>
+    <string name="code_new_run">000</string>
+    <string name="code_old_run">100</string>
+
+    <string name="key_user_status">USK</string>
+    <string name="code_user_unregistered">200</string>
+    <string name="code_user_registered">201</string>
+
+    <string name="key_user_code_type">UCT</string>
+    <string name="code_user_code_bar">UCB</string>
+    <string name="code_user_code_qr">UCQ</string>
+    <string name="key_user_mobile_number">UMN</string>
+    <string name="key_user_full_name">UFN</string>
+    <string name="key_user_id">UID</string>
+
+    <string name="max_mobile_length">10</string>
+
+    <string name="generate_code_error_msg">Errors in details</string>
+    <string name="error_color_string">#ff0000</string>
+
+    <string name="width_barcode">242dp</string>
+    <string name="height_barcode">71dp</string>
+
+    <string name="width_qrcode">242dp</string>
+    <string name="height_qrcode">242dp</string>
+
+    <string name="footer_text">© 2022 Epic Software Solution</string>
+
+</resources>
