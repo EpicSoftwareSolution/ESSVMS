@@ -6,24 +6,19 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.credentials.Credential
-import com.google.android.gms.auth.api.credentials.Credentials
-import com.google.android.gms.auth.api.credentials.CredentialsApi
-import com.google.android.gms.auth.api.credentials.HintRequest
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.naaz.essvms.R
 import com.naaz.essvms.utils.ColorFillerUtil
+import com.naaz.essvms.utils.PhoneSelectionUtil
 import com.naaz.essvms.utils.StoreUtil
 
+
 class GenerateCodesActivity : AppCompatActivity() {
-    lateinit var phoneNumber: TextInputEditText
+
+    private val phoneSelectionUtil = PhoneSelectionUtil()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,22 +29,10 @@ class GenerateCodesActivity : AppCompatActivity() {
             supportActionBar?.hide()
         }
 
-        phoneNumber = findViewById(R.id.mobileNumberText)
-
         findViewById<TextInputEditText>(R.id.fullNameText).filters += InputFilter.LengthFilter(100)
         findViewById<TextInputEditText>(R.id.userIdText).filters += InputFilter.LengthFilter(16)
 
-        phoneSelection()
-
-       /* val fullNameEditText = findViewById<Button>(R.id.fullNameText)
-        fullNameEditText.setOnClickListener {
-            fullNameEditTextClickEvent()
-        }
-
-        val userIdEditText = findViewById<Button>(R.id.userIdText)
-        userIdEditText.setOnClickListener {
-            userIdEditTextClickEvent()
-        }*/
+        phoneSelectionUtil.findAndSetPhoneNumber(this, this,  findViewById(R.id.mobileNumberText))
 
         val generateQrCodeBtn = findViewById<Button>(R.id.generateQrCodeBtn)
         generateQrCodeBtn.setOnClickListener {
@@ -69,18 +52,6 @@ class GenerateCodesActivity : AppCompatActivity() {
                 resources.getString(R.string.code_user_code_bar)
             )
             generateCodeInfo()
-        }
-    }
-
-    private fun userIdEditTextClickEvent() {
-        findViewById<TextInputLayout>(R.id.userIdText).apply {
-            setBoxStrokeColorStateList(ColorFillerUtil().getNormalColor(this.context))
-        }
-    }
-
-    private fun fullNameEditTextClickEvent() {
-        findViewById<TextInputLayout>(R.id.fullNameLayout).apply {
-            setBoxStrokeColorStateList(ColorFillerUtil().getNormalColor(this.context))
         }
     }
 
@@ -153,47 +124,6 @@ class GenerateCodesActivity : AppCompatActivity() {
         }
 
         return !hasError
-    }
-
-    private fun isUserRegistered(): Boolean {
-        val storeUtil = StoreUtil()
-        var userStatusCode = storeUtil.retrieveLocalValue(this, resources.getString(R.string.key_user_status))
-        return userStatusCode == resources.getString(R.string.code_user_registered)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun phoneSelection() {
-        val hintRequest = HintRequest.Builder()
-            .setPhoneNumberIdentifierSupported(true)
-            .build()
-
-        val intent = Credentials.getClient(this).getHintPickerIntent(hintRequest)
-        val intentSenderRequest = IntentSenderRequest.Builder(intent.intentSender)
-
-        var hintLauncher = registerForActivityResult(
-            ActivityResultContracts.StartIntentSenderForResult()
-        ) { result: ActivityResult? ->
-            if (result != null && result.data != null) {
-                when (result.resultCode) {
-                    CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE -> Toast.makeText(this, "No phone numbers found", Toast.LENGTH_LONG).show().also {
-                        phoneNumber.setText("1234567890")
-                    }
-                    RESULT_OK -> {
-                        val credential: Credential? = result.data!!.getParcelableExtra(Credential.EXTRA_KEY)
-                        credential?.apply {
-                            var mobileNumber = credential.id
-                            val maxMobileLength = resources.getString(R.string.max_mobile_length).toInt()
-                            if(mobileNumber.length > maxMobileLength) {
-                                mobileNumber = credential.id.takeLast(maxMobileLength)
-                            }
-                            phoneNumber.setText(mobileNumber)
-                        }
-                    }
-                }
-            }
-        }
-
-        hintLauncher.launch(intentSenderRequest.build())
     }
 
     override fun onBackPressed() { return }

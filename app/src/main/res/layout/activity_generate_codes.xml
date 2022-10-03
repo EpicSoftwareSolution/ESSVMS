@@ -46,13 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/mobile_number_text"
-            android:enabled="false"
             android:layout_margin="10sp"
-            android:textColorHint="@color/purple_500"
-            app:boxStrokeColor="@color/purple_500"
-            app:boxStrokeWidth="2dp"
-            android:inputType="textNoSuggestions"
-            android:importantForAutofill="no"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,10 +54,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/mobileNumberText"
+                android:inputType="number"
                 android:layout_width="281dp"
                 android:layout_height="match_parent"
-                android:inputType="text"
-                android:focusable="false"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +97,7 @@
                 android:id="@+id/userIdText"
                 android:layout_width="281dp"
                 android:layout_height="match_parent"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 

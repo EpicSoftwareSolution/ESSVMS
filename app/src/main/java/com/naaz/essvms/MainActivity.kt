@@ -1,6 +1,8 @@
 package com.naaz.essvms
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.naaz.essvms.activities.DisplayCodesActivity
 import com.naaz.essvms.activities.GenerateCodesActivity
@@ -23,8 +26,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        checkRequestPermission()
+
 //        StoreUtil().storeValueLocally(this, resources.getString(R.string.key_app_run), resources.getString(R.string.code_new_run))
 //        StoreUtil().storeValueLocally(this, resources.getString(R.string.key_user_status), resources.getString(R.string.code_user_unregistered))
+//        val decryptionUtil = DecryptionUtil()
+//        val pass = decryptionUtil.cipherEncrypt("NAAZ_SOFT_ENCRYT", "")
 
         if(isUserRegistered()) {
             redirectToDisplayActivity()
@@ -40,6 +47,26 @@ class MainActivity : AppCompatActivity() {
 
         if (supportActionBar != null) {
             supportActionBar?.hide()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkRequestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val permissions = arrayOf(
+                Manifest.permission.READ_SMS,
+                Manifest.permission.READ_PHONE_NUMBERS,
+                Manifest.permission.READ_PHONE_STATE
+            )
+            val permissionsRequest = mutableListOf<String>()
+            for (permission in permissions) {
+                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                    permissionsRequest.add(permission)
+                }
+            }
+            if (permissionsRequest.size > 0) {
+                requestPermissions(permissionsRequest.toTypedArray(), 100)
+            }
         }
     }
 

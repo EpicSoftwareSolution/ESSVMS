@@ -42,39 +42,4 @@ class DecryptionUtil {
         }
         return null
     }
-
-   /* fun encrypt(context: Context, strToEncrypt: String): ByteArray {
-        val plainText = strToEncrypt.toByteArray(Charsets.UTF_8)
-        val keygen = KeyGenerator.getInstance("AES")
-        keygen.init(256)
-        val key = keygen.generateKey()
-        saveSecretKey(context, key)
-        val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
-        cipher.init(Cipher.ENCRYPT_MODE, key)
-        val cipherText = cipher.doFinal(plainText)
-        saveInitializationVector(context, cipher.iv)
-
-        val sb = StringBuilder()
-        for (b in cipherText) {
-            sb.append(b.toChar())
-        }
-        Toast.makeText(context, "dbg encrypted = [" + sb.toString() + "]", Toast.LENGTH_LONG).show()
-
-        return cipherText
-    }
-
-    fun decrypt(context:Context, dataToDecrypt: ByteArray): ByteArray {
-        val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
-        val ivSpec = IvParameterSpec(getSavedInitializationVector(context))
-        cipher.init(Cipher.DECRYPT_MODE, getSavedSecretKey(context), ivSpec)
-        val cipherText = cipher.doFinal(dataToDecrypt)
-
-        val sb = StringBuilder()
-        for (b in cipherText) {
-            sb.append(b.toChar())
-        }
-        Toast.makeText(context, "dbg decrypted = [" + sb.toString() + "]", Toast.LENGTH_LONG).show()
-
-        return cipherText
-    }*/
 }

@@ -23,22 +23,4 @@ class ColorFillerUtil {
         )
         return ColorStateList(states, colors)
     }
-
-    fun getNormalColor(context: Context): ColorStateList {
-        val color: Int = Color.rgb(98, 0, 238)
-        val color2 = Color.parseColor(context.resources.getColor(R.color.purple_500).toString())
-        val states = arrayOf(
-            intArrayOf(android.R.attr.state_focused),
-            intArrayOf(android.R.attr.state_hovered),
-            intArrayOf(android.R.attr.state_enabled),
-            intArrayOf()
-        )
-        val colors = intArrayOf(
-            color,
-            color,
-            color,
-            color2
-        )
-        return ColorStateList(states, colors)
-    }
 }
