@@ -21,11 +21,13 @@ import com.google.android.material.textfield.TextInputLayout
 import com.naaz.essvms.R
 
 class PhoneSelectionUtil {
+    private val BLANK_STRING = ""
+
     @SuppressLint("HardwareIds")
     @RequiresApi(Build.VERSION_CODES.O)
     fun findAndSetPhoneNumber(context: Context, activity: AppCompatActivity, phoneNumberInputText: TextInputEditText) {
         try {
-            var mobileNumber = ""
+            var mobileNumber = BLANK_STRING
             if (ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.READ_SMS
                 ) == PackageManager.PERMISSION_GRANTED &&
@@ -34,10 +36,12 @@ class PhoneSelectionUtil {
                     Manifest.permission.READ_PHONE_STATE
                 ) == PackageManager.PERMISSION_GRANTED) {
                 var telephonyManager = context.getSystemService(AppCompatActivity.TELEPHONY_SERVICE) as TelephonyManager
-                mobileNumber = telephonyManager.line1Number.toString()
+                if(telephonyManager?.line1Number != null) {
+                    mobileNumber = telephonyManager.line1Number.toString()
+                }
             }
 
-            if(mobileNumber == "") {
+            if(mobileNumber == BLANK_STRING) {
                 phoneSelection(context, activity, phoneNumberInputText)
             } else {
                 setMobileNumber(context, activity, phoneNumberInputText, mobileNumber)
@@ -45,7 +49,7 @@ class PhoneSelectionUtil {
 
         } catch (ex: Exception) {
             println(ex)
-            setMobileNumber(context, activity, phoneNumberInputText, "")
+            setMobileNumber(context, activity, phoneNumberInputText, BLANK_STRING)
         }
     }
 
@@ -54,7 +58,7 @@ class PhoneSelectionUtil {
                                 activity: AppCompatActivity,
                                 mobileNumberInputText: TextInputEditText,
                                 mobileNumberInput: String) {
-        if(mobileNumberInput.trim() == "") {
+        if(mobileNumberInput.trim() == BLANK_STRING) {
             mobileNumberInputText.apply {
                 focusable = TextInputEditText.FOCUSABLE
             }

@@ -32,7 +32,7 @@ class GenerateCodesActivity : AppCompatActivity() {
         findViewById<TextInputEditText>(R.id.fullNameText).filters += InputFilter.LengthFilter(100)
         findViewById<TextInputEditText>(R.id.userIdText).filters += InputFilter.LengthFilter(16)
 
-        phoneSelectionUtil.findAndSetPhoneNumber(this, this,  findViewById(R.id.mobileNumberText))
+        phoneSelectionUtil.findAndSetPhoneNumber(this, this, findViewById(R.id.mobileNumberText))
 
         val generateQrCodeBtn = findViewById<Button>(R.id.generateQrCodeBtn)
         generateQrCodeBtn.setOnClickListener {
@@ -89,7 +89,7 @@ class GenerateCodesActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
     }
-
+    
     @RequiresApi(Build.VERSION_CODES.O)
     private fun isValidGenerateCodesInfo(): Boolean {
         val errorMessageView = findViewById<TextView>(R.id.errorMessage)
