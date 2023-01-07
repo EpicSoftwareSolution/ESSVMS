@@ -32,17 +32,17 @@ class MainActivity : AppCompatActivity() {
 //        val decryptionUtil = DecryptionUtil()
 //        val pass = decryptionUtil.cipherEncrypt("NAAZ_SOFT_ENCRYT", "")
 
-        if(isUserRegistered()) {
-            redirectToDisplayActivity()
-        } else if (!isFirstTimeRun()) {
+//        if(isUserRegistered()) {
+//            redirectToDisplayActivity()
+//        } else if (!isFirstTimeRun()) {
             redirectToNextActivity()
-        } else {
-            setContentView(R.layout.activity_main)
-            findViewById<RelativeLayout>(R.id.mainActivityLayout).apply {
-                visibility = View.VISIBLE
-            }
-            createMainWindow()
-        }
+//        } else {
+//            setContentView(R.layout.activity_main)
+//            findViewById<RelativeLayout>(R.id.mainActivityLayout).apply {
+//                visibility = View.VISIBLE
+//            }
+//            createMainWindow()
+//        }
 
         if (supportActionBar != null) {
             supportActionBar?.hide()

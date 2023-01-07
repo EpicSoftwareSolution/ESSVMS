@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ESSVMS</string>
+    <string name="app_name">ESSVMSManual</string>
     <string name="header_text">ESS VMS</string>
     <string name="enc_key">"NAAZ_SOFT_ENCRYT"</string>
     <string name="blank_password_error_msg">Password can not be blank</string>

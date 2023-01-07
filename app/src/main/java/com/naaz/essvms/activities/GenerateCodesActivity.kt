@@ -29,10 +29,13 @@ class GenerateCodesActivity : AppCompatActivity() {
             supportActionBar?.hide()
         }
 
+        findViewById<TextInputEditText>(R.id.mobileNumberText).setText("")
         findViewById<TextInputEditText>(R.id.fullNameText).filters += InputFilter.LengthFilter(100)
+        findViewById<TextInputEditText>(R.id.fullNameText).setText("")
         findViewById<TextInputEditText>(R.id.userIdText).filters += InputFilter.LengthFilter(16)
+        findViewById<TextInputEditText>(R.id.userIdText).setText("")
 
-        phoneSelectionUtil.findAndSetPhoneNumber(this, this, findViewById(R.id.mobileNumberText))
+//        phoneSelectionUtil.findAndSetPhoneNumber(this, this, findViewById(R.id.mobileNumberText))
 
         val generateQrCodeBtn = findViewById<Button>(R.id.generateQrCodeBtn)
         generateQrCodeBtn.setOnClickListener {
@@ -81,6 +84,12 @@ class GenerateCodesActivity : AppCompatActivity() {
                 resources.getString(R.string.key_user_status),
                 resources.getString(R.string.code_user_registered)
             )
+
+            findViewById<TextInputEditText>(R.id.mobileNumberText).setText("")
+            findViewById<TextInputEditText>(R.id.fullNameText).setText("")
+            findViewById<TextInputEditText>(R.id.userIdText).setText("")
+            findViewById<TextInputEditText>(R.id.mobileNumberText).requestFocus()
+
 
             val myIntent = Intent(
                 this,

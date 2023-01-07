@@ -19,10 +19,10 @@ class MyApplicationContext : Application() {
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             //To disable screenshot of the app
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                activity.window.setFlags(
-                    WindowManager.LayoutParams.FLAG_SECURE,
-                    WindowManager.LayoutParams.FLAG_SECURE
-                )
+//                activity.window.setFlags(
+//                    WindowManager.LayoutParams.FLAG_SECURE,
+//                    WindowManager.LayoutParams.FLAG_SECURE
+//                )
             }
 
             override fun onActivityStarted(activity: Activity) {}
