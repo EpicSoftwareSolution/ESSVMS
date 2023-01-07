@@ -10,7 +10,7 @@
     <string name="login_button_text">Login</string>
     <string name="mobile_number_text">Mobile No</string>
     <string name="full_name_text">Name</string>
-    <string name="user_id_text">Force No / Aadhar No</string>
+    <string name="user_id_text">Force No / Aadhaar No</string>
     <string name="bar_code_text">Bar Code</string>
     <string name="qr_code_text">QR Code</string>
     <string-array name="admin_passes">

@@ -2,6 +2,7 @@ package com.naaz.essvms
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.naaz.essvms.utils.DecryptionUtil
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,5 +21,12 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.naaz.essvms", appContext.packageName)
+    }
+
+    @Test
+    fun testDecryption() {
+        val decryptionUtil = DecryptionUtil()
+        val someVal = decryptionUtil.cipherDecrypt( "NAAZ_SOFT_ENCRYT", "+Ee/MNEGTysJKr6ipVzvtA==")
+        println(someVal)
     }
 }

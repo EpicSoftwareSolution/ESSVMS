@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         checkRequestPermission()
 
 //        StoreUtil().storeValueLocally(this, resources.getString(R.string.key_app_run), resources.getString(R.string.code_new_run))

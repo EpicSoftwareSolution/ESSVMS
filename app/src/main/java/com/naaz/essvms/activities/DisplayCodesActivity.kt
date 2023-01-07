@@ -78,5 +78,5 @@ class DisplayCodesActivity : AppCompatActivity() {
         )
     }
 
-    override fun onBackPressed() { return }
+    override fun onBackPressed() { finishAffinity() }
 }

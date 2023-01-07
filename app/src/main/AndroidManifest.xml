@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/Theme.ESSVMS"
+        android:name=".config.MyApplicationContext"
         tools:targetApi="31">
         <activity
             android:name=".activities.FooterActivity"
