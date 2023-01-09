@@ -29,11 +29,9 @@ class GenerateCodesActivity : AppCompatActivity() {
             supportActionBar?.hide()
         }
 
-        findViewById<TextInputEditText>(R.id.mobileNumberText).setText("")
+        findViewById<TextInputEditText>(R.id.mobileNumberText).filters += InputFilter.LengthFilter(10)
         findViewById<TextInputEditText>(R.id.fullNameText).filters += InputFilter.LengthFilter(100)
-        findViewById<TextInputEditText>(R.id.fullNameText).setText("")
         findViewById<TextInputEditText>(R.id.userIdText).filters += InputFilter.LengthFilter(16)
-        findViewById<TextInputEditText>(R.id.userIdText).setText("")
 
 //        phoneSelectionUtil.findAndSetPhoneNumber(this, this, findViewById(R.id.mobileNumberText))
 
